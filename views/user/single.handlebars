@@ -1,0 +1,207 @@
+  <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+              {{!--     <img class="profile-user-img img-fluid img-circle"
+                       src="#"
+                       alt="User profile picture"> --}}
+                </div>
+                <h3 class="profile-username text-center">{{alldatauser.name}}</h3>
+                <p class="text-muted text-center">{{alldatauser.nick}}</p>           
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="/user/activity" >Activity</a></li>              
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                  <div class="post_separetor">
+                    <div class="post clearfix ">
+                      <div class="user-block">
+                          
+                         <img class="img-circle img-bordered-sm" src="/{{post.user.file}}" alt="User Image">
+                 
+                        <span class="username">
+                          <a href="#">{{post.user.name}}</a><a> {{post.title}}</a>   
+                          <span class="float-right">                         
+                            <a class="link-black text-sm">{{post.category.title}}</a>
+                          </span>  
+                            {{#compare post.share "==" true}}
+                                  <a href="/user/post/{{post.sharefrom._id}}" class="btn-tool" style="font-family:Comic Sans MS, cursive, sans-serif"> Original Publication {{post.sharefrom.title}}</a>
+                            {{/compare}}   
+                         
+                        </span>
+                        <span class="description">{{post.creationDate}}</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p>
+                       {{post.description}}
+                     </p> 
+                          {{#compare post.typefile "==" "image"}}
+               
+                        <div class="col-sm-13">
+                          <img class="imagen_index mb-3 " src="/{{post.file}}" alt="Photo">
+                        </div>
+                                          
+                    {{else}}
+                    <div class="timeline-body">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="/{{post.file}}" frameborder="0" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                    <br>
+                    {{/compare}}
+                    
+                      
+                             <p>
+                              <span>
+                                   <div class="pull-right like" >
+                                <span data-id="{{id}}" 
+                                  class="
+                                  {{#compare id "==" like.publication }} 
+                                      hide
+                                  {{/compare}} 
+                                  btn-like far fa-heart fa-2x"
+                                  aria-hidden="true"
+                                  data-toggle="tooltip"
+                                  data-placement="bottom"
+                                  title="Dar me gusta"
+                                ></span>
+                    
+                    
+                                <span data-id="{{post._id}}" 
+                                  class="
+                                  {{#compare id "!=" like.publication }} 
+                                      hide
+                                  {{/compare}} 
+                                  btn-unlike  actived far fa-heart fa-2x" 
+                                  aria-hidden="true"
+                                  data-toggle="tooltip"
+                                  data-placement="bottom"
+                                  title="Ya no me gusta"
+                                ></span>
+                                {{!-- <input type="hidden" class="form-control" name="Session" id="UserSession" value={{alldatauser._id}}>
+                                <input type="hidden" class="form-control" name="Post" id="PostId" value={{post._id}}> --}}
+                          </div> 
+                          </span>
+
+                           <span class="float-right " style="margin-top: -30px;">
+                        <a class="link-black text-sm">
+                           <i  class="far fa-comments  mr-1 "></i>Comments {{total}}
+                        </a>
+                      </span>
+
+
+                          <span class="float-right" style="margin-top: -30px; margin-right:100px"  >
+                            
+                              <a href="#share" data-toggle="modal"  data-book-id="my_id_value" data-placement="bottom" class="link-black text-sm mr-2"><i class="fas fa-share "></i> Share</a>
+                            <div class="modal" id="share" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Are you sure want to share?</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">Select "Acept" to share this publication.</div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                     
+                                  <input type="hidden"  id="iduser" value={{post.user._id}}>
+                                  <input type="hidden" type="name"  id="title"   value="{{post.title}}">
+                                  <input type="hidden"  id="postid"   value={{post._id}}>
+                                  <img type="image" id="imageshare" src="/{{post.file}}" style="height:1px; width:1px;">   
+                                   
+                                   <input type="hidden" type="name"  id="description"  value="{{post.description}}">  
+                                <span class="input-group-append">
+                                  <button id="sharepost" type="submit" class="btn btn-success">Share</button>
+                                </span>
+                            </div>
+                                </div>
+                                </div>
+                            </div>
+                          </span>
+
+                          <span class="float-right" style="margin-top: -30px; margin-right:170px">
+                          <a href="#my_modal" data-toggle="modal" data-book-id="my_id_value"  class="link-black text-sm" data-placement="bottom" ><i class="fab fa-gratipay mr-1"></i> Lovers</a>
+                            <div class="modal" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">All lovers</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">Check all people who love this post.</div>
+                                       {{#each likes}}
+                                        <div class="user-block" style="margin-left: 100px;">
+                                            <img class="img-circle img-bordered-sm" src="/{{user.file}}" alt="User Image">
+                                            <span class="username">
+                                              <a href="/user/contact/{{user._id}}">{{user.name}}</a>Email: <a>{{user.email}}</a>
+                                            </span>
+                                        </div>
+                                       {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                          </span>
+                      </p>                
+                      {{#each post.comments}}
+                           <div class="user-block">
+                           <img class="img-circle img-bordered-sm" src="/{{sender.file}}" alt="User Image">
+                            <ul class="chat-messages"  >&nbsp; {{message}}</ul>
+                            <span class="username" style="margin-top: -20px;"><small>by </small>{{username}} <small>at</small><small>{{createdAt}}</small></span>
+                            </div>
+                          {{/each}} 
+                          {{#compare post.allowComments "==" true}}
+                          <div id="messages" class="user-block"  ></div> <i id="typing"></i>
+                            <form id="form"  method="post">
+                              <div class="input-group">
+                                  <input id="message" class="form-control" name="comment-body" rows="3">
+                                  <input type="hidden" class="iduser"  value={{alldatauser._id}}>
+                                  <input  type="hidden" id="name"  value={{alldatauser.name}}>
+                                  <input  type="hidden" id="post"  value={{post._id}}>
+                                  <img type="image" id="imagesend"  src="/{{alldatauser.file}}" style="height:1px; width:1px;">                              
+                                <span class="input-group-append">
+                                  <button id="subir" type="submit"  class="btn btn-danger">Send</button>
+                                </span>
+                            
+                              </div>
+                            </form>
+                            {{else}}
+                                  <input type="hidden" id="message" class="form-control" name="comment-body" rows="3">
+                          {{/compare}}
+                          
+                  </div>     
+                    <!-- /.post -->
+                  </div>
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+<script  src="/js/socket.js"></script>
+<script  src="/js/chat.js"></script>
+<script  src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>

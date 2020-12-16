@@ -1,0 +1,62 @@
+ 
+      <div class="row">
+    <!-- /.col -->
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">My followers</h3>
+
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header --> 
+            <div class="card-body p-0">
+               {{#each datafollow.follows}}
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-light">
+                  <tbody>
+                  <tr class="{{_id}}">
+                    <td class="mailbox-name"><a style="font-family:verdana;"> {{followingto.email}}</a> 
+                      <div class="text-center">
+                         <img class="profile-user-img img-fluid img-rounded" style="height:70px; width:80px" src="/{{followingto.file}}" alt="User profile picture"> 
+                      </div>
+                      <br>
+                  {{!--     <form action="/user/followers/{{_id}}?newMethod=DELETE" method="post">
+                        <input  type="hidden" class="form-control" name="id" id="data-followed" value={{_id}} >
+                        <button  class="btn btn-danger btn-block"  type="submit" ><b>Dejar de seguir  a {{namefollowerto}} </b><i class="fas fa-user-times"></i></button>
+                      </form>   --}}
+{{!--  <td class="nav-item">
+                            <button  class="btn bg-red bnt-flat margin delete-reference-post-message" value={{_id}} >    
+                                <i class="fas fa-trash-alt"> </i> 
+                            </button> 
+                          </td> --}}
+                       
+                       <button value={{_id}}  class="btn btn-danger btn-block deletefollowing"  type="submit" ><b>Dejar de seguir  a {{namefollowerto}} </b><i class="fas fa-user-times"></i></button>
+                       
+                    </td>
+                  </tr>
+                 </tbody>
+                </table>
+               
+                <!-- /.table -->
+              </div>
+               {{/each}}
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+          
+      </div>
+
+  {{!--    {{datafollow.name}}
+     {{datafollow._id}}
+      {{#each datafollow.follows}}
+        <form action="/user/followers/{{_id}}?newMethod=DELETE" method="post">
+          <input  type="hidden" class="form-control" name="id" id="data-followed" value={{_id}} >
+            <span>{{name}}</span>  
+              <button  class="btn btn-warning btn-block" type="submit" ><b>Dejar de seguir</b></button>
+              <i class="fas fa-user-times"></i>
+        </form> 
+      {{/each}} --}}

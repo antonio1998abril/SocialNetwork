@@ -1,0 +1,45 @@
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+          <div class="card-header">
+                <h3 class="card-title text-light">TOPICS</h3>
+            </div>
+        <div class="card-body">
+    <table class="table table-dark">
+        <thead>
+            <tr class="text-center">
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+            <tbody class="table-hover bg-dark category-list">
+                {{#each categories}}
+                    <tr class="text-center {{_id}}">
+                        <td>{{title}}</td>
+                        <td class="project-actions text-fixed">
+                            <a  class="btn bg-warning bnt-flat margin" href="/user/category/edit/{{_id}}"><i class="fas fa-pencil-alt"></i></a>    
+                            <button  class="btn bg-red bnt-flat margin idCategory" value={{_id}} >    
+                                <i class="fas fa-trash-alt"> </i> 
+                            </button>    
+                        </td>         
+                    </tr>
+                {{/each}}
+            </tbody>          
+    </table>
+       <div class="row p-4">
+        <div class="col-md-8">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="category-title" name="title" placeholder="Enter Title">
+                </div>
+                <a >
+                    <button class="btn btn-primary btn-lg" id="create-category-button" type="submit">Create Topic</button>
+                </a>
+        </div>
+    </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+       </div>
+      </div>

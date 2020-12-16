@@ -1,0 +1,34 @@
+<script src="/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.2/sweetalert2.all.min.js"></script>
+<div class="col-md-12" >
+<div class="colorUniversal">
+
+    {{#if success_message}}
+    <br>
+            <div class="alert alert-success alert-dismissible fade show mt-2 auto-hide" role="alert">
+                <strong>{{success_message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" arial-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <script>
+                $(document).ready(function(){
+                swal({title:'Exito',type:'success', timer: 1500})
+                });
+            </script> 
+    {{/if}}
+
+        {{#if error_message}}
+        <br>
+            <div class="alert alert-danger alert-dismissible fade show mt-2 auto-hide" role="alert">
+                <strong>{{error_message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" arial-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <script>
+                $(document).ready(function(){
+                swal({title:'Error',type:'error', timer: 1500})
+                });
+            </script>    
+    {{/if}}
+</div>
+</div>
+
+

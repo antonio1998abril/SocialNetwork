@@ -1,0 +1,90 @@
+
+          <div class="row">
+              <div class="col-md-12">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title text-light">CREATE NEW POST</h3>
+              </div>
+              <div class="card-body">
+                <form action="/user/posts/create" method="post" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <i class="fas fa-heading "></i> <label >Titulo</label> 
+                        <input name="title" id="title" type="text" class="form-control" placeholder="Ingresa el titulo">
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                     <div class="row">
+                    <div class="col-sm-5">
+                      <!-- text input -->
+                      <div class="form-group">
+                       <i class="fas fa-file-video"></i>  <label for="file">Subir archivo</label>
+                      <input type="file"  id="file" name="uploadedFile" class="btn-outline-success"style="font-size:15px">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <i class="fas fa-unlock-alt"></i> <label>Estatus</label>
+                        <select name="status" id="status" class="form-control">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="draft">Draft</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <i class="fas fa-mouse-pointer"></i> <label>Categoria</label>
+                        <select name="category" id="category" class="form-control">
+                          {{#each categories}}
+                          <option value="{{_id}}">{{title}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <i class="fas fa-pencil-alt"></i> <label>Contenido</label>
+                        <textarea  name="description"  id="description" class="form-control" rows="3" placeholder="Escribe el contenido"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- checkbox -->
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="allowComments" name="allowComments">
+                          <i class="fab fa-weixin"></i> <label class="form-check-label">Permitir Comentarios</label>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                   <button id="create-post-button" class="btn btn-success btn-lg" type="submit">Crear </button>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- /.card -->
+          </div>
+   

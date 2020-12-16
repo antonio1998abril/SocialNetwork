@@ -1,0 +1,63 @@
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch">
+             
+                  <h6>Coincidences to {{search}}</h6>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="row">
+  
+        
+      <!-- Blog Entries Column -->
+        <div class="col-md-12">
+
+<section >
+    <div class="container">
+        <div class="row">
+            <!-- Team member -->
+        {{#each post}}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="/{{file}}" alt="card image"></p>
+                                    <h4 class="card-title">Nick: {{nick}}</h4>
+                                    <p class="card-text">Name: {{name}}</p>
+                                    <p class="card-text">Email: {{email}}</p>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Information</h4>
+                                    <p class="card-text">About: </b>{{bio}}</p>
+                                     <h4 class="card-title">Skills:</h4>
+                                    <p class="card-text"></b>{{skills}}</p>
+                                        <h4 class="card-title">Location:</h4>
+                                    <p class="card-text"></b>{{location}}</p>
+                                        <h4 class="card-title">Education:</h4>
+                                    <p class="card-text"></b>{{education}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             {{/each}}
+            <!-- ./Team member -->
+        </div>
+    </div>
+</section>
+
+      </div>
+
+    </div>
+    <!-- /.row -->

@@ -1,0 +1,80 @@
+       <div class="row">
+          <div class="col-md-12">
+            <!-- DIRECT CHAT PRIMARY -->
+            <div class="card card-primary cardutline direct-chat-primary">
+              <div class="card-header">
+                <h3 class="card-title">one to one</h3>
+              </div>
+           
+                <!-- Conversations are loaded here -->
+                  {{#each message.comments}} 
+                 <div class="card-body"  style="margin-top:-10px;">
+              {{#compare ../idsession "==" emiter._id}}
+                  <!-- Message. Default to the left -->
+              
+                  <div class="direct-chat-msg" >
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-left">{{../usersession.name}}</span>
+                      <span class="direct-chat-timestamp float-right">{{createdAt}}</span>
+                    </div>
+                    <img class="direct-chat-img" src="/{{emiter.file}}" alt="message user image">
+                    <div class="direct-chat-text  " >
+                      {{message}}
+                    </div>
+                  </div>
+                  
+                  {{else}}
+            
+                  <div class="direct-chat-msg right">
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-right">{{name}}</span>
+                      <span class="direct-chat-timestamp float-left">{{createdAt}}</span>
+                    </div>
+                     <img class="direct-chat-img" src="/{{emiter.file}}" alt="message user image"> 
+                    <div class="direct-chat-text " >
+                      {{message}}
+                  
+                    </div>
+                  </div>
+             
+              {{/compare}}
+              </div>
+                  {{/each}}
+
+
+             
+              <div id="messages">
+
+              </div>
+             
+              <i id="typing"></i>
+              <div class="card-footer">
+                <form id="form" method="post">
+                  <div class="input-group">
+                     <input id="messageuser" class="form-control" name="comment-body" rows="3">
+                    <input type="hidden" id="name" value={{usersession.name}}>
+                    <input type="hidden" id="emiter" value={{usersession._id}}>
+                    <input type="hidden"  id="recepter" value={{message._id}}>
+                     <img type="image" id="imagesend"  src="/{{usersession.file}}" style="height:1px; width:1px;">
+                    <span class="input-group-append">
+                      <button id="subir"  type="submit" class="btn btn-primary">Send</button>
+                    </span>
+                  </div>
+                </form>
+              </div> 
+
+            
+            <!--/.direct-chat -->
+          </div>
+          <!-- /.col -->      
+
+
+        </div>
+            <!--/.direct-chat -->
+                  
+<script  src="/js/socket.js"></script>
+  <script  src="/js/chatprivate.js"></script>
+
+<script  src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>

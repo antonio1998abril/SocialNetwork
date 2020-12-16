@@ -1,0 +1,53 @@
+{{!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+    <div class="container">
+        <a class="navbar-brand" href="/">PORTAFOLIO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    {{#if user}}
+             
+                 <li class="nav-item ">
+                    <a href="/user" class="nav-link" style="font-size:20px">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="/logout" class="nav-link" style="font-size:20px">Salir</a>
+                </li>
+                {{else}}
+                <li class="nav-item ">
+                    <a href="/register" class="nav-link"  style="font-size:20px">Registrate</a>
+                </li>   
+                <li class="nav-item ">
+                    <a href="/login" class="nav-link" style="font-size:20px">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="/" class="nav-link" style="font-size:20px">Inicio</a>
+                </li>
+                {{/if}}
+                
+                </ul> 
+
+                <!-- SEARCH FORM -->
+                <form  action="/" method="post" class="form-inline ml-3">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search"   id="search" name="search">
+                        <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit" >
+                            <i class="fas fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                </form>          
+            </div>
+        </a>
+    </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+    

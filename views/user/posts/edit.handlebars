@@ -1,0 +1,98 @@
+
+          <div class="row">
+              <div class="col-md-12">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title text-light">UPDATE POST</h3>
+              </div>
+              <div class="card-body">
+                <form action="/user/posts/edit/{{post._id}}?newMethod=PUT" method="post" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <i class="fas fa-heading "></i> <label >Title</label> 
+                        <input name="title" id="title" type="text" class="form-control" placeholder="Write your title" value="{{post.title}}">
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                     <div class="row">
+                    <div class="col-sm-5">
+                      <!-- text input -->
+                      <div class="form-group">
+                       <i class="fas fa-file-video"></i>  <label for="file">Upload file</label>
+                      <input type="file"  id="file" name="uploadedFile" class="btn-outline-success"style="font-size:15px">
+                     
+                      </div>
+                    </div>
+                  </div>
+
+                  <img type="image" id="image" name="image" src="/{{post.file}}" style="height:100px; width:100px;">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <i class="fas fa-unlock-alt"></i> <label>Estatus</label>
+                        <select name="status" id="status" class="form-control">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="draft">Draft</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <i class="fas fa-mouse-pointer"></i> <label>Category</label>
+                        <select name="category" id="category" class="form-control">
+                        {{#select post.category}}
+                            {{#each categories}}
+                            <option value="{{_id}}">{{title}}</option>
+                            {{/each}}
+                        {{/select}}
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <i class="fas fa-pencil-alt"></i> <label>Content</label>
+                        <textarea  name="description"  id="description" class="form-control" rows="3" >{{post.description}}</textarea>
+                    
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- checkbox -->
+                      <div class="form-group">
+                        <div class="form-check">
+                          {{#compare post.allowComments "==" true}}
+                          <input class="form-check-input" type="checkbox" id="allowComments" name="allowComments" checked>
+                          {{else}}
+                          <input class="form-check-input" type="checkbox" id="allowComments" name="allowComments">
+                          {{/compare}}
+                          <i class="fab fa-weixin"></i> <label class="form-check-label">Permitir Comentarios</label>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                   <button  class="btn btn-info btn-lg" type="submit">Update</button>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- /.card -->
+          </div>
+   

@@ -1,0 +1,294 @@
+
+  <footer class="sticky-footer">
+    <div class="container">
+    <div class="text-center">
+      <b>Version</b> 1.0.0<b>Antonio Rodriguez Barrientos</b>
+    </div>
+   
+  </footer>
+
+<aside "control-sidebar control-sidebar-dark">
+
+</aside>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/js/demo.js"></script>
+
+  <!-- /.control-sidebar -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.2/sweetalert2.all.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $("#create-post-button").on('click',function(e){
+      swal({title:'Done',type:'success'}) 
+      setTimeout(function(){ 
+      window.location.href = "/user/posts";
+      },2000);
+      })
+    ///fin
+      $("#create-category-button").on('click',function(e){
+        e.preventDefault();
+          
+            var data = $("#category-title").val();
+            ///
+            $.ajax({
+                url: '/user/category',
+                type: 'POST',
+                data: {name: data},
+                success: function (response) {
+                  console.log(response._id)
+                    var html = `
+                    <tr class="text-center ${response._id}">
+                        <td>${response.title}</td>
+                        <td class="project-actions text-fixed">
+                            <a class="btn bg-warning bnt-flat margin" href="/user/category/edit/${response._id}"><i class="fas fa-pencil-alt"></i></a>
+                            <button class="btn bg-red bnt-flat margin idCategory" value=${response._id} type="button">    
+                                <i class="fas fa-trash-alt"> </i> 
+                            </button>
+                        </td>
+                    </tr> 
+                    `;
+                    $(".category-list").append(html);
+
+                    $("button.idCategory").click(function(){
+                        var idcategory=$(this).val();
+                        console.log(idcategory)
+                          $('.' + idcategory).remove();
+                          $.ajax({
+                            url:'/user/category',
+                            type:'DELETE',
+                          data:{category:idcategory},
+                            success:function(response){
+                              
+                            }
+                          })
+                        }) 
+                },
+                error: function(error){
+                  swal({title:'Error this topics has been taken',type:'error'})  
+               }
+            });
+            $("#category-title").val('');
+            $("#id-user").val('');
+      });
+
+           $("#update-category-button").on('click', function (e) {
+            e.preventDefault();
+            var data = $("#category-title").val();
+            var id = $("#category-id").val();
+            var title=$("#ti").val();
+            $.ajax({
+                url: `/user/category/edit/${id}`,
+                type: 'PUT',
+                data: {name:data,category:id},
+                success: function (response) {
+                  $(`td:contains(${title})`).html(data);
+                },
+                error: function(error){
+                  swal({title:'Error this topics has been taken',type:'error'})
+                    $('#update-category-comeback').addClass("hide");
+                    $('#update-category-button').show();
+               }
+            });
+                    $(this).hide();
+                    $('#update-category-comeback').removeClass("hide");
+        }); 
+    ///////////////////////////////////////////////////////////delete category
+    $("button.idCategory").on('click',function(e){
+      e.preventDefault();
+
+     var idcategory=$(this).val();
+      $('.' + idcategory).remove();
+      $.ajax({
+        url:'/user/category',
+        type:'DELETE',
+       data:{category:idcategory},
+        success:function(response){
+          
+        }
+      })
+
+    })
+    ///DELETEPOST
+      $('.deletepost').on('click',function(e){
+        e.preventDefault();
+        var id=$(this).val();
+        $('.' + id).remove();
+        $.ajax({
+          url:`/user/posts`,
+          type:'DELETE',
+          data:{idpost:id},
+          success:function(response){
+            
+          }
+        })
+      // swal({title:'Elminado',type:'success'})
+      //   setTimeout(function(){ 
+      //window.location.href = "/user/posts";
+      //},1500);
+       })
+     setTimeout(function () {
+            $('.auto-hide').slideUp(300);
+      },3000);
+
+        //////////////////DELETE REFERENCE MESSAGE OF THE POST
+        $('button.delete-reference-post-message').on('click',function(e){
+           e.preventDefault();
+          var idmessage=$(this).val();
+          $('.' + idmessage).remove();
+          $.ajax({
+            url: `/user/activity`,
+            type:'DELETE',
+            data:{idmessage:idmessage},
+            success:function(response){
+            }
+          })
+
+        })
+
+            $("#update-messagepost-button").on('click', function (e) {
+            e.preventDefault();
+            var message =$("#before-message").val()
+            var data= $("#updated-message").val();
+            var id = $("#idmessage").val();
+            $.ajax({
+                url: `/user/message/edit/${id}`,
+                type: 'PUT',
+                data: {newmessage: data},
+                success: function (response) {
+                  $(`td:contains(${message})`).html(data);
+                }
+            });
+        });
+/////////////////////BUTTON ACTION FOLLOW/////////////////////////////        
+
+      
+      $("#follow").on("click").click(function(e){
+      e.preventDefault();
+      var data=$("#data-followed").val();
+      var dataname=$("#name").val();
+      var datamyname=$("#myname").val();
+
+      var cantidad=$("#followers").val();
+      var numero = parseInt(cantidad);
+          numero= numero + 1; 
+      $.ajax({
+        url:`/user/contact/${data}`,
+        type:'POST',
+        data:{id:data,name:dataname,myname:datamyname},
+        success:function(response){
+        
+        }
+      })
+      $(this).hide();
+       $(`.updatenumber:contains(${cantidad})`).html(numero);
+ 
+    });//aqui termina 
+ $(".deletefollowing").on("click").click(function(e){
+   e.preventDefault();
+    var idfollow=$(this).val();
+    $('.' + idfollow).remove();
+    $.ajax({
+      url:'/user/followers',
+      type:'DELETE',
+      data:{idFollow:idfollow},
+
+    })
+
+ });
+////////////////////////////buttons like/unlike //////////////
+      $('[data-toggle="tooltip"]').tooltip();
+
+      $(".btn-like").on('click', function (e) {
+          e.preventDefault();
+                $(this).addClass("hide");
+                $(this).parent().find('.btn-unlike').removeClass("hide")
+              
+            $.ajax({
+              url:`/user/post/`+$(this).attr("data-id"),
+              type:'POST',
+              cache: false,
+              success:function(response){
+                console.log(response)
+              }
+            })
+          })
+      $(".btn-unlike").on('click', function (e) {
+          e.preventDefault();
+              $(this).addClass("hide");
+                $(this).parent().find('.btn-like').removeClass("hide")
+        
+          $.ajax({
+            url:`/user/post/`+$(this).attr("data-id"),
+            type:'DELETE',
+            cache: false,
+            success:function(response){
+              console.log(response)
+            }
+          })
+      })
+
+  
+//////////////////////////////////////////////////////////////
+//share button
+      $("#sharepost").on('click',function (e){
+        e.preventDefault();
+        var id=$("#postid").val();
+
+        var userowner=$("#iduser").val();
+        var title=$("#title").val();
+      
+        var description=$("#description").val();
+        var image =$("#imageshare").attr("src");
+
+
+
+      $.ajax({
+        url:`/user/sharepost/${id}`,
+        type:'POST',
+        data:{title,description,image,userowner},
+        success:function(response){
+              swal({title:'Done',type:'success'}) 
+          setTimeout(function(){ 
+          window.location.href = "/user/posts";
+          },1000);
+        }
+
+          })
+      });
+    });
+
+
+</script>
+</body>
+</html>
+

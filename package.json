@@ -1,0 +1,40 @@
+{
+  "name": "socialnetwork",
+  "version": "1.0.0",
+  "description": "PortaFolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "server": "nodemon server.js",
+    "server-install": "npm install",
+    "install-all": "concurrently \"npm run app-install\"",
+    "dev": "concurrently \"npm run app\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "admin-lte": "^3.0.5",
+    "bcrypt": "^5.0.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-timeout": "^1.9.0",
+    "dotenv": "^8.2.0",
+    "ember-truth-helpers": "^2.1.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.10",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "handlebars-helpers": "^0.10.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.28",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.3.0",
+    "swal-forms": "^0.5.0",
+    "sweetalert": "^2.1.2"
+  }
+}

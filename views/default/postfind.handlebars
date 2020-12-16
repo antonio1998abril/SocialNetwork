@@ -1,0 +1,87 @@
+<div class="row">
+      <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <!-- Profile Image -->   
+        </h1>
+        
+        {{#if user}}
+        <!-- Blog Post -->
+       {{#each post}}
+        <div class="card mb-4">
+           {{#compare typefile "==" "image"}}
+                     <div class="row">
+                        <div class="col-sm-12">
+                          <img class="imagen_index mb-3 " src="/{{file}}" alt="Photo">
+                        </div>
+                    </div>                          
+                    {{else}}
+                    <div class="timeline-body">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="/{{file}}" frameborder="0" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                    {{/compare}}
+          <div class="card-body">
+            <h2 class="card-title">{{title}}</h2>
+        
+            <p class="card-text">{{description}}</p>
+           
+          </div>
+          <div class="card-footer text-muted">
+            Creado el {{creationDate}},
+            by<h3>{{user.name}}</h3>
+          </div>
+        </div>
+        {{/each}}
+        {{else}}
+           {{#each post}}
+        <div class="card mb-4">
+           {{#compare typefile "==" "image"}}
+                     <div class="row">
+                        <div class="col-sm-12">
+                          <img class="imagen_index mb-3 " src="/{{file}}" alt="Photo">
+                        </div>
+                    </div>                          
+                    {{else}}
+                    <div class="timeline-body">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="/{{file}}" frameborder="0" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                    {{/compare}}
+          <div class="card-body">
+            <h2 class="card-title">{{title}}</h2>
+        
+            <p class="card-text">{{description}}</p>
+            <a href="/login" class="btn btn-primary">Inicia sesion para ver &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Creado el {{creationDate}},
+            by<h3>{{user.name}}</h3>
+          </div>
+        </div>
+        {{/each}}
+
+        {{/if}} 
+        </ul> 
+      </div>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+   
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">My GitHub</h5>
+          <div class="card-body">
+                  <a href="https://github.com/antonio1998abril" >
+                      <i class="fab fa-github fa-4x"></i></a>
+                  <a href="https://github.com/antonio1998abril" >
+               <i class="fab fa-linkedin fa-4x"></i></a>
+           <p> Application developed with Node,express,handlebars and Sockect io that i used to create chat message and Global messages per publication, and in Database i used MongoDB</p>
+          </div>
+          
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->

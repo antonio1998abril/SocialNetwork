@@ -1,0 +1,83 @@
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Activity</h3>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class=" table mailbox-messages" >
+                <table class="table table-responsive">
+                  <tbody>
+                      {{catId.message}}
+                {{#each activity}}
+                  <tr class="text-center">
+                    <td  class="nav-item"><a href="../../post/{{publication._id}}"><i class="far fa-heart fa-2x activedac"></i></a></td>
+                    <td class="mailbox-subject ">You do like publicacion <b>{{publication.title}}</b> of user <b> {{publication.user.name}}</b></td>
+                  </tr>
+                {{/each}}
+                 
+                  </tbody>
+                </table>
+            <div class="card-body p-0 ">
+                <table class="table table-responsive">
+                  <tbody>
+                    {{#each comments}}
+                    <tr class="{{_id}}">
+                    <br>
+                  <ul class="nav nav-pills">
+                    {{#compare _id "==" ../catId}}
+                    
+                 <td class="nav-item">
+                  <a href="/user/message/edit/{{_id}}" class="btn bg-warning bnt-flat margin" >
+                    <i class="fas fa-pencil-alt fa-1x"></i> 
+                  </a>
+                </td>
+
+                <td class="nav-item">
+                      <button  class="btn bg-red bnt-flat margin delete-reference-post-message" value={{_id}} >    
+                                <i class="fas fa-trash-alt"> </i> 
+                            </button> 
+                </td> 
+                <td class="mailbox-star  " >You made a comment:<b>{{message}}</b>  in publication <a href="../../post/{{post._id}}" ><b>{{post.title}}</b></a> <b>
+                  <input type="hidden" class="form-control" id="before-message" value="{{message}}"> </b> 
+                  <input type="text" class="form-control" id="updated-message" name="title" value="{{message}}"> </b> 
+                  <input type="hidden" class="form-control" id="idmessage" name="id" value="{{../catId}}"> </b> 
+                <button class="btn btn-success btn-sm" id="update-messagepost-button" type="submit">Actualizar</button>
+                </td>
+
+                {{else}}
+                <td class="nav-item">
+                  <a href="/user/message/edit/{{_id}}" class="btn bg-warning bnt-flat margin mailbox-star" >
+                    <i class="fas fa-pencil-alt fa-1x"></i>
+                  </a>
+                </td>
+                <td class="nav-item">
+                     <button  class="btn bg-red bnt-flat margin delete-reference-post-message" value={{_id}} >    
+                          <i class="fas fa-trash-alt"> </i> 
+                      </button> 
+                </td>
+                <td  class="mailbox-subject " >You made a comment:<b>{{message}}</b>  in publication <a href="../post/{{post._id}}" ><b>{{post.title}}</b></a> </b></td>
+            
+               {{/compare}}
+                 </ul>
+                 </tr>
+                  {{/each}}
+                    
+                  </tbody>
+                </table>
+            </div>
+                <!-- /.table -->
+             </div>
+              <!-- /.mail-box-messages -->
+            </div>
+
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+

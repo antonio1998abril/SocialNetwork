@@ -1,0 +1,117 @@
+{{#if errors}}
+{{#each errors}}        
+            <div class="alert alert-danger alert-dismissible fade show mt-2 auto-hide" role="alert">
+                <strong>{{message}}</strong>
+                <button  type="button" class="close" data-dismiss="alert" arial-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <script>
+                $(document).ready(function(){
+                swal({title:'Error',type:'error'})
+                });
+            </script>
+{{/each}}
+{{/if}}
+
+    <!-- Input addon -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">SETTINGS</h3>
+              </div>
+              <div class="card-body">
+                <form action="/user/configuration/{{data._id}}?newMethod=PUT" method="post" enctype="multipart/form-data">
+                  
+                  <label for="title">Nombre:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-users-cog"></i></span>
+                  </div>
+                  <input type="text" class="form-control"id="name" name="name" value='{{data.name}}'>
+                </div>
+                
+                <label for="title">Email:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input type="email" id="email" name="email" class="form-control" value='{{data.email}}'>
+                </div>
+
+                <label for="title">Nick:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" id="nick" name="nick" class="form-control" value='{{data.nick}}'>
+                </div>
+
+              
+                <label for="title">Skills:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bookmark"></i></span>
+                  </div>
+                  <input type="skills" id="skills" name="skills"class="form-control" value='{{data.skills}}'>
+                </div>
+
+                <label for="title">Location:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
+                  </div>
+                  <input id="location" name="location" type="location" class="form-control" value='{{data.location}}'>
+                </div>
+                
+                <label for="title">Education:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-school"></i></span>
+                  </div>
+                  <input type="education" id="education"  name="education" class="form-control" value='{{data.education}}'>
+                </div>
+                
+                      <div class="row">
+                    <div class="col-sm-5">
+                      <!-- text input -->
+                      <div class="form-group">
+                       <i class="fas fa-file-video"></i>  <label for="file">My image</label>
+                      <input type="file"  id="file" name="uploadedFile" class="btn-outline-success"style="font-size:15px" src="/{{post.file}}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <img type="image" id="image" name="image" src="/{{data.file}}" style="height:100px; width:100px;">
+               
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <i class="fas fa-pencil-alt"></i> <label>Bio</label>
+                      
+                        <textarea  name="bio"  id="bio" class="form-control" rows="3">{{data.bio}}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Password</label>
+                    <input type="password" id="password" name="password" class="form-control is-warning" id="inputWarning">
+                  </div>
+
+                   <div class="form-group">
+                    <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Confirm</label>
+                    <input type="password" name="confirm" class="form-control is-warning" id="inputWarning" value={{data.confirm}}>
+
+                  </div>
+
+                  
+                <div class="input-group mb-2">
+                  <span class="input-group-prepend">
+                    <button type="submit" class="btn btn-info">ACCEPT</button>
+                  </span>
+                </div>
+                <!-- /input-group -->
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+  

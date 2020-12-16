@@ -1,0 +1,51 @@
+ <!-- /.card -->
+                    <div class="row">
+                    <div class="col-md-12">
+                        <!-- USERS LIST -->
+                        <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Miembros</h3>
+
+                            <div class="card-tools">
+                            <span class="badge badge-danger">All your personal chats</span>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <ul class="users-list clearfix">
+                                {{#each recepter.chatroom}}
+                            <li >
+                                {{!-- <img src="dist/img/user1-128x128.jpg" alt="User Image"> --}}
+
+                                {{#compare recepemit.email "==" ../recepter.email}}
+                                <img class="profile-user-img img-fluid img-bordered-sm" src="/{{emitrecep.file}}" alt="User profile picture" style="height:70px; width:80px">
+                                <a  class="users-list-name">{{emitrecep.name}}-- (to me {{recepemit.name}})</a>
+                                {{else}} 
+                                <img class="profile-user-img img-fluid img-bordered-sm" src="/{{recepemit.file}}" alt="User profile picture" style="height:70px; width:80px">
+                                <a  class="users-list-name">{{recepemit.name}}-- (to me {{emitrecep.name}})</a>
+
+                                            {{/compare}}
+                        
+                                <span class="users-list-date">{{createdAt}}</span>
+                                <span class="input-group-append">
+                                <a href="/user/messages/{{_id}}"  class="btn btn-info col-md-12">Chat</a>
+                                </span>
+                                 <form action="/user/messages/delete/{{_id}}?newMethod=DELETE" method="post">
+                                 <input  type="hidden" id="recep" name="recep"  value={{recepemit._id}}>
+                                 <input  type="hidden" id="emit" name="emit"  value={{emitrecep._id}}>
+                                    <button  class="btn btn-danger col-md-12" type="submit">
+                                        <i class="fas fa-trash-alt"> </i> 
+                                    </button>
+                                </form>
+                            </li>
+                                {{/each}} 
+                            </ul>
+                          
+                            <!-- /.users-list -->
+                        </div>
+                        <!-- /.card-footer -->
+                        </div>
+                        <!--/.card -->
+                    </div>
+                    <!-- /.col -->
+                    </div>

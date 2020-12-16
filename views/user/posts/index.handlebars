@@ -1,0 +1,82 @@
+{{#if errors}}
+{{#each errors}}
+<br>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+          <button type="button" class="close" data-dismiss="alert" arial-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{{/each}}
+{{/if}}
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-warning">
+            <div class="card-header">
+              <h1 class="color-title-card-text text-light">GENERAL</h1>
+            </div>
+
+
+
+        <div class="card-body p-0">
+          <div class=" table mailbox-messages" >
+          <table class="table table-dark table-responsive">
+              <thead>
+                  <tr  class="text-center">
+                    
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Comments Allowed</th>
+                    <th>Creation Date</th>
+                    <th>Actions</th>
+                  </tr>
+              </thead >
+              <tbody  class="table-hover bg-dark category-list">
+                {{#each posts}}
+                  <tr  class="text-center {{_id}}">
+                     {{#compare typefile "==" "image"}}
+                  
+                          <td> <img class="imagen_allposts" src="/{{file}}" ></td>
+                                              
+                    {{else}}
+                   
+                      <div class="embed-responsive">
+                       <td> <iframe class="embed-responsive-item" src="/{{file}}" frameborder="0" allowfullscreen=""></iframe></td>
+                      </div>
+                   
+                    {{/compare}}
+                     
+                      {{!-- <td><img class="imagen_allposts" src="/{{file}}"></td> --}}
+                      <td class="mailbox-subject">{{title}}</td>
+                      <td class="mailbox-subject" value="{{_id}}">{{category.title}}</td>
+                      <td class="mailbox-subject" >{{description}}</td>
+                      <td class="mailbox-subject">{{status}}</td>
+                      <td class="mailbox-subject">{{allowComments}}</td>
+                      <td class="mailbox-subject">{{creationDate}}</td>
+                         <td class="project-actions text-fixed" >
+                          <a class="btn btn-info btn-sm" href="/user/posts/edit/{{_id}}" ><i class="fas fa-pencil-alt fa-1x"></i> Edit </a>
+                          </td>
+                          <td class="project-actions text-fixed">
+                            <button  class="btn btn-danger btn-sm margin deletepost" value={{_id}} >
+                              <i class="fas fa-trash-alt "> </i>
+                            </button> 
+                          </td>
+
+                      
+                     
+                  </tr>
+                   {{/each}}
+              </tbody>
+          </table>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+       </div>
+      </div>
+

@@ -1,0 +1,71 @@
+<!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-4 col-md-7 d-flex align-items-stretch">
+              <div class="card bg-light">                   
+                {{#each follow}}
+                <div class="card-header text-muted border-bottom-0">
+                  {{nick}}
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-6">
+                      <h2 class="lead"><b>Name: {{name}}</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b>{{bio}} </p>
+                      <ul class="ml-1 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Location:{{location}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-graduation-cap"></i></span> Education :{{education}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-at"></i></span> Email : {{email}}</li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                   {{!--    <img src="#" alt="" class="img-circle img-fluid"> --}}
+                        
+                         <img class="img-circle img-fluid" src="/{{file}} " style="width:80px; height:80px;" >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+               
+                    {{#each follows}}
+              
+                      {{#compare followingto "==" ../../statefollow }}
+                      <a href="/user/message" class="btn btn-sm btn-danger">
+                      <i class="fas fa-comments "></i> He follow me
+                    </a>
+                        {{else}}                       
+                      {{/compare}}
+                    {{/each}}
+                   <a href="/user/contact/{{_id}}"   class="btn btn-sm btn-primary" type="submit">
+                  
+                     <i class="fas fa-address-card disabled"></i> See perfil
+                    </a>
+                   </div>
+                </div>       
+                {{/each}}    
+              </div>   
+            </div>    
+          </div>
+          
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <nav aria-label="Contacts Page Navigation">
+            <ul class="pagination justify-content-center m-0">
+   {{!--            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li> --}}
+            </ul>
+          </nav>
+        </div>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+
