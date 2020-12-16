@@ -11,3 +11,5 @@ but you only can delete the chat of personal room and unfollow them, you can sea
 information put your publications as private and share publications.
 
 #To test this page, you could log in as email: 1@sfsdf and password: 1 or 23@hotmail.com, password: 2
+
+#To see demo:https://petfaces-portafolio.herokuapp.com/
